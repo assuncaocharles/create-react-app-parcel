@@ -1,0 +1,32 @@
+{
+  "name": "react-scripts-parcel",
+  "version": "0.0.1",
+  "description": "Configuration and scripts for Create React App parcel.",
+  "repository": "sw-yx/create-react-app-parcel",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "bugs": {
+    "url": "https://github.com/sw-yx/create-react-app-parcel/issues"
+  },
+  "files": ["bin", "config", "scripts", "template", "utils"],
+  "bin": {
+    "react-scripts-parcel": "./bin/react-scripts-parcel.js"
+  },
+  "devDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "1.2.0"
+  },
+  "browserslist": {
+    "development": ["last 2 chrome versions", "last 2 firefox versions", "last 2 edge versions"],
+    "production": [">1%", "last 4 versions", "Firefox ESR", "not ie < 11"]
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "parcel-bundler": "^1.8.1"
+  }
+}

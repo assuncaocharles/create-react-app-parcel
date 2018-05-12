@@ -1,4 +1,4 @@
-# Create React App Parcel
+# Create React App Parcel 💩
 
 > a fun experiment to create react apps with parcel instead of webpack cos why not
 
@@ -73,6 +73,10 @@ Your app is ready to be deployed.
 
 ejects you out of this shiznit like so
 
+## Contributing
+
+We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twitter [@swyx](https://twitter.com/swyx) to discuss or file an issue, this is super new
+
 ## Acknowledgements
 
 We are grateful to the authors of existing related projects for their ideas and collaboration:
@@ -83,3 +87,7 @@ We are grateful to the authors of existing related projects for their ideas and 
 ## License
 
 Create React App Parcel is open source software [licensed as MIT](https://github.com/facebook/create-react-app/blob/master/LICENSE).
+
+## Official Emoji
+
+of course it's the 💩

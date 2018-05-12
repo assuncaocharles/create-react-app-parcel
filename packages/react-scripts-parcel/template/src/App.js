@@ -21,13 +21,15 @@ class App extends Component {
 }
 
 function A(props) {
-  const { href, children } = props;
+  // you can use object spread because babel-preset-react-app is set up for you
+  const { href, children, ...rest } = props; 
   return (
     <a
       className="App-link"
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      {...rest}
     >
       {children}
     </a>

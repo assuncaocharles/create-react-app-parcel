@@ -15,12 +15,17 @@ const url = require('url');
 const hyperquest = require('hyperquest');
 const envinfo = require('envinfo');
 const os = require('os');
-const findMonorepo = require('react-dev-utils/workspaceUtils').findMonorepo;
+// const findMonorepo = require('react-dev-utils/workspaceUtils').findMonorepo;
+const findMonorepo = require('./workspaceUtils').findMonorepo;
 const packageJson = require('./package.json');
 
 // These files should be allowed to remain on a failed install,
 // but then silently removed during the next create.
-const errorLogFilePatterns = ['npm-debug.log', 'yarn-error.log', 'yarn-debug.log'];
+const errorLogFilePatterns = [
+  'npm-debug.log',
+  'yarn-error.log',
+  'yarn-debug.log',
+];
 
 let projectName;
 
@@ -33,25 +38,52 @@ const program = new commander.Command(packageJson.name)
   })
   .option('--verbose', 'print additional logs')
   .option('--info', 'print environment debug info')
-  .option('--scripts-version <alternative-package>', 'use a non-standard version of react-scripts')
+  .option(
+    '--scripts-version <alternative-package>',
+    'use a non-standard version of react-scripts'
+  )
   .option('--use-npm')
   .allowUnknownOption()
   .on('--help', () => {
     console.log(`    Only ${chalk.green('<project-directory>')} is required.`);
     console.log();
-    console.log(`    A custom ${chalk.cyan('--scripts-version')} can be one of:`);
+    console.log(
+      `    A custom ${chalk.cyan('--scripts-version')} can be one of:`
+    );
     console.log(`      - a specific npm version: ${chalk.green('0.8.2')}`);
     console.log(`      - a specific npm tag: ${chalk.green('@next')}`);
-    console.log(`      - a custom fork published on npm: ${chalk.green('my-react-scripts')}`);
     console.log(
-      `      - a local path relative to the current working directory: ${chalk.green('file:../my-react-scripts')}`
+      `      - a custom fork published on npm: ${chalk.green(
+        'my-react-scripts'
+      )}`
     );
-    console.log(`      - a .tgz archive: ${chalk.green('https://mysite.com/my-react-scripts-0.8.2.tgz')}`);
-    console.log(`      - a .tar.gz archive: ${chalk.green('https://mysite.com/my-react-scripts-0.8.2.tar.gz')}`);
-    console.log(`    It is not needed unless you specifically want to use a fork.`);
+    console.log(
+      `      - a local path relative to the current working directory: ${chalk.green(
+        'file:../my-react-scripts'
+      )}`
+    );
+    console.log(
+      `      - a .tgz archive: ${chalk.green(
+        'https://mysite.com/my-react-scripts-0.8.2.tgz'
+      )}`
+    );
+    console.log(
+      `      - a .tar.gz archive: ${chalk.green(
+        'https://mysite.com/my-react-scripts-0.8.2.tar.gz'
+      )}`
+    );
+    console.log(
+      `    It is not needed unless you specifically want to use a fork.`
+    );
     console.log();
-    console.log(`    If you have any problems, do not hesitate to file an issue:`);
-    console.log(`      ${chalk.cyan('https://github.com/facebook/create-react-app/issues/new')}`);
+    console.log(
+      `    If you have any problems, do not hesitate to file an issue:`
+    );
+    console.log(
+      `      ${chalk.cyan(
+        'https://github.com/facebook/create-react-app/issues/new'
+      )}`
+    );
     console.log();
   })
   .parse(process.argv);
@@ -65,12 +97,12 @@ if (program.info) {
         Binaries: ['Node', 'npm', 'Yarn'],
         Browsers: ['Chrome', 'Edge', 'Internet Explorer', 'Firefox', 'Safari'],
         npmPackages: ['react', 'react-dom', 'react-scripts'],
-        npmGlobalPackages: ['create-react-app']
+        npmGlobalPackages: ['create-react-app'],
       },
       {
         clipboard: true,
         duplicates: true,
-        showNotFound: true
+        showNotFound: true,
       }
     )
     .then(console.log)
@@ -79,12 +111,16 @@ if (program.info) {
 
 if (typeof projectName === 'undefined') {
   console.error('Please specify the project directory:');
-  console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<project-directory>')}`);
+  console.log(
+    `  ${chalk.cyan(program.name())} ${chalk.green('<project-directory>')}`
+  );
   console.log();
   console.log('For example:');
   console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-react-app')}`);
   console.log();
-  console.log(`Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`);
+  console.log(
+    `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`
+  );
   process.exit(1);
 }
 
@@ -99,11 +135,18 @@ function printValidationResults(results) {
 const hiddenProgram = new commander.Command()
   .option(
     '--internal-testing-template <path-to-template>',
-    '(internal usage only, DO NOT RELY ON THIS) ' + 'use a non-standard application template'
+    '(internal usage only, DO NOT RELY ON THIS) ' +
+      'use a non-standard application template'
   )
   .parse(process.argv);
 
-createApp(projectName, program.verbose, program.scriptsVersion, program.useNpm, hiddenProgram.internalTestingTemplate);
+createApp(
+  projectName,
+  program.verbose,
+  program.scriptsVersion,
+  program.useNpm,
+  hiddenProgram.internalTestingTemplate
+);
 
 function createApp(name, verbose, version, useNpm, template) {
   const root = path.resolve(name);
@@ -121,9 +164,12 @@ function createApp(name, verbose, version, useNpm, template) {
   const packageJson = {
     name: appName,
     version: '0.1.0',
-    private: true
+    private: true,
   };
-  fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(packageJson, null, 2) + os.EOL);
+  fs.writeFileSync(
+    path.join(root, 'package.json'),
+    JSON.stringify(packageJson, null, 2) + os.EOL
+  );
 
   const useYarn = useNpm ? false : shouldUseYarn(root);
   const originalDirectory = process.cwd();
@@ -206,7 +252,13 @@ function install(root, useYarn, dependencies, verbose, isOnline) {
       }
     } else {
       command = 'npm';
-      args = ['install', '--save', '--save-exact', '--loglevel', 'error'].concat(dependencies);
+      args = [
+        'install',
+        '--save',
+        '--save-exact',
+        '--loglevel',
+        'error',
+      ].concat(dependencies);
     }
 
     if (verbose) {
@@ -217,7 +269,7 @@ function install(root, useYarn, dependencies, verbose, isOnline) {
     child.on('close', code => {
       if (code !== 0) {
         reject({
-          command: `${command} ${args.join(' ')}`
+          command: `${command} ${args.join(' ')}`,
         });
         return;
       }
@@ -226,7 +278,15 @@ function install(root, useYarn, dependencies, verbose, isOnline) {
   });
 }
 
-function run(root, appName, version, verbose, originalDirectory, template, useYarn) {
+function run(
+  root,
+  appName,
+  version,
+  verbose,
+  originalDirectory,
+  template,
+  useYarn
+) {
   const packageToInstall = getInstallPackage(version, originalDirectory);
   const allDependencies = ['react', 'react-dom', packageToInstall];
 
@@ -235,22 +295,34 @@ function run(root, appName, version, verbose, originalDirectory, template, useYa
     .then(packageName =>
       checkIfOnline(useYarn).then(isOnline => ({
         isOnline: isOnline,
-        packageName: packageName
+        packageName: packageName,
       }))
     )
     .then(info => {
       const isOnline = info.isOnline;
       const packageName = info.packageName;
-      console.log(`Installing ${chalk.cyan('react')}, ${chalk.cyan('react-dom')}, and ${chalk.cyan(packageName)}...`);
+      console.log(
+        `Installing ${chalk.cyan('react')}, ${chalk.cyan(
+          'react-dom'
+        )}, and ${chalk.cyan(packageName)}...`
+      );
       console.log();
 
-      return install(root, useYarn, allDependencies, verbose, isOnline).then(() => packageName);
+      return install(root, useYarn, allDependencies, verbose, isOnline).then(
+        () => packageName
+      );
     })
     .then(packageName => {
       checkNodeVersion(packageName);
       setCaretRangeForRuntimeDeps(packageName);
 
-      const scriptsPath = path.resolve(process.cwd(), 'node_modules', packageName, 'scripts', 'init.js');
+      const scriptsPath = path.resolve(
+        process.cwd(),
+        'node_modules',
+        packageName,
+        'scripts',
+        'init.js'
+      );
       const init = require(scriptsPath);
       init(root, appName, verbose, originalDirectory, template);
 
@@ -289,7 +361,11 @@ function run(root, appName, version, verbose, originalDirectory, template, useYa
       const remainingFiles = fs.readdirSync(path.join(root));
       if (!remainingFiles.length) {
         // Delete target folder if empty
-        console.log(`Deleting ${chalk.cyan(`${appName}/`)} from ${chalk.cyan(path.resolve(root, '..'))}`);
+        console.log(
+          `Deleting ${chalk.cyan(`${appName}/`)} from ${chalk.cyan(
+            path.resolve(root, '..')
+          )}`
+        );
         process.chdir(path.resolve(root, '..'));
         fs.removeSync(path.join(root));
       }
@@ -307,7 +383,10 @@ function getInstallPackage(version, originalDirectory) {
     if (version[0] === '@') {
       packageToInstall += version;
     } else if (version.match(/^file:/)) {
-      packageToInstall = `file:${path.resolve(originalDirectory, version.match(/^file:(.*)?$/)[1])}`;
+      packageToInstall = `file:${path.resolve(
+        originalDirectory,
+        version.match(/^file:(.*)?$/)[1]
+      )}`;
     } else {
       // for tar.gz or alternative paths
       packageToInstall = version;
@@ -333,7 +412,7 @@ function getTemporaryDirectory() {
               // Callback might throw and fail, since it's a temp directory the
               // OS will clean it up eventually...
             }
-          }
+          },
         });
       }
     });
@@ -375,9 +454,17 @@ function getPackageName(installPackage) {
       .catch(err => {
         // The package name could be with or without semver version, e.g. react-scripts-0.2.0-alpha.1.tgz
         // However, this function returns package name only without semver version.
-        console.log(`Could not extract the package name from the archive: ${err.message}`);
-        const assumedProjectName = installPackage.match(/^.+\/(.+?)(?:-\d+.+)?\.(tgz|tar\.gz)$/)[1];
-        console.log(`Based on the filename, assuming it is "${chalk.cyan(assumedProjectName)}"`);
+        console.log(
+          `Could not extract the package name from the archive: ${err.message}`
+        );
+        const assumedProjectName = installPackage.match(
+          /^.+\/(.+?)(?:-\d+.+)?\.(tgz|tar\.gz)$/
+        )[1];
+        console.log(
+          `Based on the filename, assuming it is "${chalk.cyan(
+            assumedProjectName
+          )}"`
+        );
         return Promise.resolve(assumedProjectName);
       });
   } else if (installPackage.indexOf('git+') === 0) {
@@ -387,10 +474,15 @@ function getPackageName(installPackage) {
     return Promise.resolve(installPackage.match(/([^/]+)\.git(#.*)?$/)[1]);
   } else if (installPackage.match(/.+@/)) {
     // Do not match @scope/ when stripping off @version or @tag
-    return Promise.resolve(installPackage.charAt(0) + installPackage.substr(1).split('@')[0]);
+    return Promise.resolve(
+      installPackage.charAt(0) + installPackage.substr(1).split('@')[0]
+    );
   } else if (installPackage.match(/^file:/)) {
     const installPackagePath = installPackage.match(/^file:(.*)?$/)[1];
-    const installPackageJson = require(path.join(installPackagePath, 'package.json'));
+    const installPackageJson = require(path.join(
+      installPackagePath,
+      'package.json'
+    ));
     return Promise.resolve(installPackageJson.name);
   }
   return Promise.resolve(installPackage);
@@ -409,12 +501,17 @@ function checkNpmVersion() {
   }
   return {
     hasMinNpm: hasMinNpm,
-    npmVersion: npmVersion
+    npmVersion: npmVersion,
   };
 }
 
 function checkNodeVersion(packageName) {
-  const packageJsonPath = path.resolve(process.cwd(), 'node_modules', packageName, 'package.json');
+  const packageJsonPath = path.resolve(
+    process.cwd(),
+    'node_modules',
+    packageName,
+    'package.json'
+  );
   const packageJson = require(packageJsonPath);
   if (!packageJson.engines || !packageJson.engines.node) {
     return;
@@ -437,7 +534,11 @@ function checkNodeVersion(packageName) {
 function checkAppName(appName) {
   const validationResult = validateProjectName(appName);
   if (!validationResult.validForNewPackages) {
-    console.error(`Could not create a project called ${chalk.red(`"${appName}"`)} because of npm naming restrictions:`);
+    console.error(
+      `Could not create a project called ${chalk.red(
+        `"${appName}"`
+      )} because of npm naming restrictions:`
+    );
     printValidationResults(validationResult.errors);
     printValidationResults(validationResult.warnings);
     process.exit(1);
@@ -448,7 +549,9 @@ function checkAppName(appName) {
   if (dependencies.indexOf(appName) >= 0) {
     console.error(
       chalk.red(
-        `We cannot create a project called ${chalk.green(appName)} because a dependency with the same name exists.\n` +
+        `We cannot create a project called ${chalk.green(
+          appName
+        )} because a dependency with the same name exists.\n` +
           `Due to the way npm works, the following names are not allowed:\n\n`
       ) +
         chalk.cyan(dependencies.map(depName => `  ${depName}`).join('\n')) +
@@ -470,9 +573,9 @@ function makeCaretRange(dependencies, name) {
 
   if (!semver.validRange(patchedVersion)) {
     console.error(
-      `Unable to patch ${name} dependency version because version ${chalk.red(version)} will become invalid ${chalk.red(
-        patchedVersion
-      )}`
+      `Unable to patch ${name} dependency version because version ${chalk.red(
+        version
+      )} will become invalid ${chalk.red(patchedVersion)}`
     );
     patchedVersion = version;
   }
@@ -524,7 +627,7 @@ function isSafeToCreateProjectIn(root, name) {
     'docs',
     '.travis.yml',
     '.gitlab-ci.yml',
-    '.gitattributes'
+    '.gitattributes',
   ];
   console.log();
 
@@ -532,16 +635,22 @@ function isSafeToCreateProjectIn(root, name) {
     .readdirSync(root)
     .filter(file => !validFiles.includes(file))
     // Don't treat log files from previous installation as conflicts
-    .filter(file => !errorLogFilePatterns.some(pattern => file.indexOf(pattern) === 0));
+    .filter(
+      file => !errorLogFilePatterns.some(pattern => file.indexOf(pattern) === 0)
+    );
 
   if (conflicts.length > 0) {
-    console.log(`The directory ${chalk.green(name)} contains files that could conflict:`);
+    console.log(
+      `The directory ${chalk.green(name)} contains files that could conflict:`
+    );
     console.log();
     for (const file of conflicts) {
       console.log(`  ${file}`);
     }
     console.log();
-    console.log('Either try using a new directory name, or remove the files listed above.');
+    console.log(
+      'Either try using a new directory name, or remove the files listed above.'
+    );
 
     return false;
   }
@@ -611,15 +720,21 @@ function checkThatNpmCanReadCwd() {
     chalk.red(
       `Could not start an npm process in the right directory.\n\n` +
         `The current directory is: ${chalk.bold(cwd)}\n` +
-        `However, a newly started npm process runs in: ${chalk.bold(npmCWD)}\n\n` +
+        `However, a newly started npm process runs in: ${chalk.bold(
+          npmCWD
+        )}\n\n` +
         `This is probably caused by a misconfigured system terminal shell.`
     )
   );
   if (process.platform === 'win32') {
     console.error(
       chalk.red(`On Windows, this can usually be fixed by running:\n\n`) +
-        `  ${chalk.cyan('reg')} delete "HKCU\\Software\\Microsoft\\Command Processor" /v AutoRun /f\n` +
-        `  ${chalk.cyan('reg')} delete "HKLM\\Software\\Microsoft\\Command Processor" /v AutoRun /f\n\n` +
+        `  ${chalk.cyan(
+          'reg'
+        )} delete "HKCU\\Software\\Microsoft\\Command Processor" /v AutoRun /f\n` +
+        `  ${chalk.cyan(
+          'reg'
+        )} delete "HKLM\\Software\\Microsoft\\Command Processor" /v AutoRun /f\n\n` +
         chalk.red(`Try to run the above two lines in the terminal.\n`) +
         chalk.red(
           `To learn more about this problem, read: https://blogs.msdn.microsoft.com/oldnewthing/20071121-00/?p=24433/`

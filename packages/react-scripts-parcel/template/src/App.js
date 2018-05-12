@@ -3,12 +3,22 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = { toggle: true };
+  toggleToggle = () => this.setState({ toggle: !this.state.toggle });
   render() {
+    const { toggle } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Welcome to your React ⚛️ + Parcel 📦 app!</h1>
-          <img src={logo} className="App-logo" alt="logo" />
+          <h1>
+            This app is built with <br />React ⚛️ + Parcel 📦!
+          </h1>
+          <img
+            src={logo}
+            onClick={this.toggleToggle}
+            className={'App-logo ' + (toggle && 'Logo-spin')}
+            alt="logo"
+          />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
@@ -22,7 +32,7 @@ class App extends Component {
 
 function A(props) {
   // you can use object spread because babel-preset-react-app is set up for you
-  const { href, children, ...rest } = props; 
+  const { href, children, ...rest } = props;
   return (
     <a
       className="App-link"

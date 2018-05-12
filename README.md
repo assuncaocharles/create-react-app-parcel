@@ -2,7 +2,7 @@
 
 > a fun experiment to create react apps with parcel instead of webpack cos why not
 
-> Latest version 0.0.17
+> Latest version 0.0.19
 
 ---
 

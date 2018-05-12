@@ -34,12 +34,12 @@ const chalk = require('chalk');
 // const WebpackDevServer = require('webpack-dev-server');
 const clearConsole = require('react-dev-utils/clearConsole');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
-// const {
-//   choosePort,
-//   createCompiler,
-//   prepareProxy,
-//   prepareUrls,
-// } = require('react-dev-utils/WebpackDevServerUtils');
+const {
+  choosePort,
+  createCompiler,
+  prepareProxy,
+  prepareUrls,
+} = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const paths = require('../config/paths');
 // const config = require('../config/webpack.config.dev');
@@ -58,16 +58,25 @@ const HOST = process.env.HOST || '0.0.0.0';
 
 if (process.env.HOST) {
   console.log(
-    chalk.cyan(`Attempting to bind to HOST environment variable: ${chalk.yellow(chalk.bold(process.env.HOST))}`)
+    chalk.cyan(
+      `Attempting to bind to HOST environment variable: ${chalk.yellow(
+        chalk.bold(process.env.HOST)
+      )}`
+    )
   );
-  console.log(`If this was unintentional, check that you haven't mistakenly set it in your shell.`);
-  console.log(`Learn more here: ${chalk.yellow('http://bit.ly/CRA-advanced-config')}`);
+  console.log(
+    `If this was unintentional, check that you haven't mistakenly set it in your shell.`
+  );
+  console.log(
+    `Learn more here: ${chalk.yellow('http://bit.ly/CRA-advanced-config')}`
+  );
   console.log();
 }
 
 // We require that you explictly set browsers and do not fall back to
 // browserslist defaults.
-const { checkBrowsers } = require('react-dev-utils/browsersHelper');
+// const { checkBrowsers } = require('react-dev-utils/browsersHelper');
+const { checkBrowsers } = require('./react-dev-utils/browsersHelper');
 checkBrowsers(paths.appPath)
   .then(() => {
     // We attempt to use the default port but if it is busy, we offer the user to
@@ -124,6 +133,7 @@ checkBrowsers(paths.appPath)
       const options = {}; // See options section of api docs, for the possibilities
 
       // Initialise a new bundler using a file and options
+      console.log('bundling', { file });
       const bundler = new Bundler(file, options);
 
       // Let express use the bundler middleware, this will let parcel handle every request over your express server

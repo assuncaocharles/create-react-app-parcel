@@ -2,16 +2,19 @@
   "name": "create-react-app-parcel",
   "version": "0.0.1",
   "description": "💩",
-  "files": [
-    "index.js",
-    "CRAP.js"
-  ],
+  "files": ["index.js", "CRAP.js"],
+  "repository": "sw-yx/create-react-app-parcel",
   "bin": {
     "create-react-app-parcel": "./index.js",
     "crap": "./index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "bugs": {
+    "url": "https://github.com/sw-yx/create-react-app-parcel/issues"
+  },
   "dependencies": {
     "chalk": "^1.1.3",
     "commander": "^2.9.0",

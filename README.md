@@ -82,7 +82,7 @@ We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twi
 We are grateful to the authors of existing related projects for their ideas and collaboration:
 
 * [create-react-app (@danabramov)](https://github.com/facebook/create-react-app)
-* [parcel (@jamiebuilds, @developit)](https://github.com/parcel-bundler/parcel)
+* [parcel (@jamiebuilds, @devongovett)](https://github.com/parcel-bundler/parcel)
 
 ## License
 

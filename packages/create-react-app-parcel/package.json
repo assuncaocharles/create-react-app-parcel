@@ -1,8 +1,12 @@
 {
   "name": "create-react-app-parcel",
-  "version": "0.0.6",
+  "version": "0.0.17",
   "description": "💩",
-  "files": ["index.js", "CRAP.js", "workspaceUtils.js"],
+  "files": [
+    "index.js",
+    "CRAP.js",
+    "workspaceUtils.js"
+  ],
   "repository": "sw-yx/create-react-app-parcel",
   "bin": {
     "create-react-app-parcel": "./index.js",

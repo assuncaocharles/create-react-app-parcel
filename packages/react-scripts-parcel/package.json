@@ -10,13 +10,7 @@
   "bugs": {
     "url": "https://github.com/sw-yx/create-react-app-parcel/issues"
   },
-  "files": [
-    "bin",
-    "config",
-    "scripts",
-    "template",
-    "utils"
-  ],
+  "files": ["bin", "config", "scripts", "template", "utils"],
   "bin": {
     "react-scripts-parcel": "./bin/react-scripts-parcel.js"
   },
@@ -29,23 +23,18 @@
     "fsevents": "1.2.0"
   },
   "browserslist": {
-    "development": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 edge versions"
-    ],
-    "production": [
-      ">1%",
-      "last 4 versions",
-      "Firefox ESR",
-      "not ie < 11"
-    ]
+    "development": ["last 2 chrome versions", "last 2 firefox versions", "last 2 edge versions"],
+    "production": [">1%", "last 4 versions", "Firefox ESR", "not ie < 11"]
   },
   "dependencies": {
     "chalk": "2.3.0",
     "express": "^4.16.3",
     "fs-extra": "5.0.0",
     "parcel-bundler": "^1.8.1",
-    "react-dev-utils": "^5.0.0"
+    "react-dev-utils": "^5.0.0",
+    "browserslist": "2.11.3",
+    "inquirer": "5.0.0",
+    "find-pkg": "1.0.0",
+    "pkg-up": "2.0.0"
   }
 }

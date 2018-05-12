@@ -32,8 +32,13 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
 const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
-const webpack = require('webpack');
+// const webpack = require('webpack'); // CRAP: swyx: removed webpack
 // const config = require('../config/webpack.config.prod'); // CRAP: swyx: removed webpack
+const config = require('../config/parcel.config.prod');
+// CRAP: swyx: https://parceljs.org/api.html
+const Bundler = require('parcel-bundler');
+const Path = path;
+// end CRAP: swyx: https://parceljs.org/api.html
 const paths = require('../config/paths');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
@@ -106,8 +111,7 @@ checkBrowsers(paths.appPath)
 
       const appPackage = require(paths.appPackageJson);
       const publicUrl = paths.publicUrl;
-      // const publicPath = config.output.publicPath;
-      const publicPath = paths.servedPath;
+      const publicPath = config.output.publicPath;
       const buildFolder = path.relative(process.cwd(), paths.appBuild);
       printHostingInstructions(
         appPackage,
@@ -131,46 +135,67 @@ checkBrowsers(paths.appPath)
     process.exit(1);
   });
 
+// // webpack version for reference
+// // Create the production build and print the deployment instructions.
+// function build(previousFileSizes) {
+//   console.log('Creating an optimized production build...');
+
+//   let compiler = webpack(config);
+//   return new Promise((resolve, reject) => {
+//     compiler.run((err, stats) => {
+//       if (err) {
+//         return reject(err);
+//       }
+//       const messages = formatWebpackMessages(stats.toJson({}, true));
+//       if (messages.errors.length) {
+//         // Only keep the first error. Others are often indicative
+//         // of the same problem, but confuse the reader with noise.
+//         if (messages.errors.length > 1) {
+//           messages.errors.length = 1;
+//         }
+//         return reject(new Error(messages.errors.join('\n\n')));
+//       }
+//       if (
+//         process.env.CI &&
+//         (typeof process.env.CI !== 'string' || process.env.CI.toLowerCase() !== 'false') &&
+//         messages.warnings.length
+//       ) {
+//         console.log(
+//           chalk.yellow(
+//             '\nTreating warnings as errors because process.env.CI = true.\n' + 'Most CI servers set it automatically.\n'
+//           )
+//         );
+//         return reject(new Error(messages.warnings.join('\n\n')));
+//       }
+//       return resolve({
+//         stats,
+//         previousFileSizes,
+//         warnings: messages.warnings
+//       });
+//     });
+//   });
+// }
+
+// parcel version
 // Create the production build and print the deployment instructions.
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
-  let compiler = webpack(config);
-  return new Promise((resolve, reject) => {
-    compiler.run((err, stats) => {
-      if (err) {
-        return reject(err);
-      }
-      const messages = formatWebpackMessages(stats.toJson({}, true));
-      if (messages.errors.length) {
-        // Only keep the first error. Others are often indicative
-        // of the same problem, but confuse the reader with noise.
-        if (messages.errors.length > 1) {
-          messages.errors.length = 1;
-        }
-        return reject(new Error(messages.errors.join('\n\n')));
-      }
-      if (
-        process.env.CI &&
-        (typeof process.env.CI !== 'string' ||
-          process.env.CI.toLowerCase() !== 'false') &&
-        messages.warnings.length
-      ) {
-        console.log(
-          chalk.yellow(
-            '\nTreating warnings as errors because process.env.CI = true.\n' +
-              'Most CI servers set it automatically.\n'
-          )
-        );
-        return reject(new Error(messages.warnings.join('\n\n')));
-      }
-      return resolve({
-        stats,
+  const file = paths.appHtml; // Pass an absolute path to the entrypoint here
+  let bundler = new Bundler(file, config);
+  return bundler
+    .bundle()
+    .then(bundle => {
+      return {
+        stats: 'some stats',
         previousFileSizes,
-        warnings: messages.warnings,
-      });
+        warnings: null,
+      };
+    })
+    .catch(err => {
+      console.error('errror in the build: ', err);
+      return new Error('build failed!');
     });
-  });
 }
 
 function copyPublicFolder() {

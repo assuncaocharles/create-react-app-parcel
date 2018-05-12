@@ -1,8 +1,15 @@
 # Create React App Parcel 💩
 
-> a fun experiment to create react apps with parcel instead of webpack cos why not
+> create react apps with parcel instead of webpack cos why not
 
-> Latest version 0.0.19
+Preconfigured Features that come with your Parcel setup:
+
+* [babel-preset-react-app](https://github.com/facebook/create-react-app/tree/next/packages/babel-preset-react-app) so you can use the exact same JS features that come with create-react-app (eg public class fields)
+* improved `App.js` to show off the babel preset features (click on the React logo!)
+* serviceWorker available but off by default (similar to the coming create-react-app 2.0 setup)
+* [preconfigured build setup](https://github.com/sw-yx/create-react-app-parcel/blob/master/packages/react-scripts-parcel/config/parcel.config.prod.js) based on the [ParcelJS API](https://parceljs.org/api.html)
+* nice eject experience that doesnt saddle you with a million webpack plugins
+* as far as possible, same DX as create-react-app (eg checks if you use `yarn` or `npm`, environment variables all the same)
 
 ---
 

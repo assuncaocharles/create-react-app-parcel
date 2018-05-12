@@ -12,18 +12,25 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <A href="https://reactjs.org/">Learn React</A>
+          <A href="https://parceljs.org/getting_started.html">Learn Parcel</A>
         </header>
       </div>
     );
   }
 }
 
+function A(props) {
+  const { href, children } = props;
+  return (
+    <a
+      className="App-link"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {children}
+    </a>
+  );
+}
 export default App;

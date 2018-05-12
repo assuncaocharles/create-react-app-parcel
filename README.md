@@ -18,6 +18,7 @@ npm i -g create-react-app-parcel
 
 ```bash
 crap my-app
+# or create-react-app-parcel my-app
 cd my-app
 yarn start
 ```

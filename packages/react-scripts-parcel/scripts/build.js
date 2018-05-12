@@ -99,14 +99,15 @@ checkBrowsers(paths.appPath)
         console.log(chalk.green('Compiled successfully.\n'));
       }
 
-      console.log('File sizes after gzip:\n');
-      printFileSizesAfterBuild(
-        stats,
-        previousFileSizes,
-        paths.appBuild,
-        WARN_AFTER_BUNDLE_GZIP_SIZE,
-        WARN_AFTER_CHUNK_GZIP_SIZE
-      );
+      // CRAP: swyx: disable for now until we can figure out how to do stats
+      // console.log('File sizes after gzip:\n');
+      // printFileSizesAfterBuild(
+      //   stats,
+      //   previousFileSizes,
+      //   paths.appBuild,
+      //   WARN_AFTER_BUNDLE_GZIP_SIZE,
+      //   WARN_AFTER_CHUNK_GZIP_SIZE
+      // );
       console.log();
 
       const appPackage = require(paths.appPackageJson);
@@ -189,7 +190,7 @@ function build(previousFileSizes) {
       return {
         stats: 'some stats',
         previousFileSizes,
-        warnings: null,
+        warnings: [],
       };
     })
     .catch(err => {

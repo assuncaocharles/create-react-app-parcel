@@ -11,7 +11,7 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+// const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 

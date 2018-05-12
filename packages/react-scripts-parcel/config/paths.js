@@ -11,7 +11,8 @@
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
-const findMonorepo = require('react-dev-utils/workspaceUtils').findMonorepo;
+// const findMonorepo = require('react-dev-utils/workspaceUtils').findMonorepo;
+const findMonorepo = require('./workspaceUtils').findMonorepo;
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
@@ -31,7 +32,8 @@ function ensureSlash(path, needsSlash) {
   }
 }
 
-const getPublicUrl = appPackageJson => envPublicUrl || require(appPackageJson).homepage;
+const getPublicUrl = appPackageJson =>
+  envPublicUrl || require(appPackageJson).homepage;
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer
 // "public path" at which the app is served.
@@ -41,7 +43,8 @@ const getPublicUrl = appPackageJson => envPublicUrl || require(appPackageJson).h
 // like /todos/42/static/js/bundle.7289d.js. We have to know the root.
 function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson);
-  const servedUrl = envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/');
+  const servedUrl =
+    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/');
   return ensureSlash(servedUrl, true);
 }
 
@@ -58,7 +61,7 @@ module.exports = {
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json'))
+  servedPath: getServedPath(resolveApp('package.json')),
 };
 
 let checkForMonorepo = true;
@@ -82,11 +85,12 @@ module.exports = {
   servedPath: getServedPath(resolveApp('package.json')),
   // These properties only exist before ejecting:
   ownPath: resolveOwn('.'),
-  ownNodeModules: resolveOwn('node_modules') // This is empty on npm 3
+  ownNodeModules: resolveOwn('node_modules'), // This is empty on npm 3
 };
 
 // detect if template should be used, ie. when cwd is react-scripts itself
-const useTemplate = appDirectory === fs.realpathSync(path.join(__dirname, '..'));
+const useTemplate =
+  appDirectory === fs.realpathSync(path.join(__dirname, '..'));
 
 checkForMonorepo = !useTemplate;
 
@@ -106,14 +110,16 @@ if (useTemplate) {
     servedPath: getServedPath(resolveOwn('package.json')),
     // These properties only exist before ejecting:
     ownPath: resolveOwn('.'),
-    ownNodeModules: resolveOwn('node_modules')
+    ownNodeModules: resolveOwn('node_modules'),
   };
 }
 // @remove-on-eject-end
 
 module.exports.srcPaths = [module.exports.appSrc];
 
-module.exports.useYarn = fs.existsSync(path.join(module.exports.appPath, 'yarn.lock'));
+module.exports.useYarn = fs.existsSync(
+  path.join(module.exports.appPath, 'yarn.lock')
+);
 
 if (checkForMonorepo) {
   // if app is in a monorepo (lerna or yarn workspace), treat other packages in

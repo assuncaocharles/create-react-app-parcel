@@ -53,7 +53,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 // Tools like Cloud9 rely on this.
-const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 1234;
 const HOST = process.env.HOST || '0.0.0.0';
 
 if (process.env.HOST) {
@@ -133,15 +133,23 @@ checkBrowsers(paths.appPath)
       const options = {}; // See options section of api docs, for the possibilities
 
       // Initialise a new bundler using a file and options
-      console.log('bundling', { file });
       const bundler = new Bundler(file, options);
 
       // Let express use the bundler middleware, this will let parcel handle every request over your express server
       app.use(bundler.middleware());
 
       // Listen on port 8080
-      app.listen(port);
-      console.log('listening on ', port);
+      app.listen(port, err => {
+        if (err) {
+          return console.log(err);
+        }
+        if (isInteractive) {
+          clearConsole();
+        }
+        console.log('Bundling success! Your app is live on port: ', port);
+        console.log(chalk.cyan('Starting the development server...\n'));
+        openBrowser(urls.localUrlForBrowser);
+      });
     }
 
     start();
@@ -149,7 +157,8 @@ checkBrowsers(paths.appPath)
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {
       process.on(sig, function() {
-        devServer.close();
+        // devServer.close();
+        console.log('closing CRAP');
         process.exit();
       });
     });

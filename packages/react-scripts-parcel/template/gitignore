@@ -6,8 +6,8 @@
 # testing
 /coverage
 
-# production
-/build
+# production - note this is different from webpack
+/dist
 
 # misc
 .DS_Store

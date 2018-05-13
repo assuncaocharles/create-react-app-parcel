@@ -41,7 +41,8 @@ switch (script) {
         console.log({ result });
         console.error(
           'react-scripts-parcel/bin error: There was a segfault while building - This may be related to a parcel issue. \n\n ' +
-            'check out https://github.com/sw-yx/create-react-app-parcel/issues/1 for more'
+            'check out https://github.com/sw-yx/create-react-app-parcel/issues/1 for more. \n\n' +
+            'we dont yet know what causes it but if you retry after a while it will work again.'
         );
       } else if (result.signal === 'SIGKILL') {
         console.log(

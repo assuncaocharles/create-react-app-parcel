@@ -146,7 +146,10 @@ checkBrowsers(paths.appPath)
         if (isInteractive) {
           clearConsole();
         }
-        console.log('Bundling success! Your app is live on port: ', port);
+        console.log(
+          'Bundling success! Your app is live at ',
+          urls.localUrlForBrowser
+        );
         console.log(chalk.cyan('Starting the development server...\n'));
         openBrowser(urls.localUrlForBrowser);
       });

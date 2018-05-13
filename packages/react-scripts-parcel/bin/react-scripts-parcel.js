@@ -18,7 +18,9 @@ process.on('unhandledRejection', err => {
 const spawn = require('react-dev-utils/crossSpawn');
 const args = process.argv.slice(2);
 
-const scriptIndex = args.findIndex(x => x === 'build' || x === 'eject' || x === 'start' || x === 'test');
+const scriptIndex = args.findIndex(
+  x => x === 'build' || x === 'eject' || x === 'start' || x === 'test'
+);
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 
@@ -29,11 +31,19 @@ switch (script) {
   case 'test': {
     const result = spawn.sync(
       'node',
-      nodeArgs.concat(require.resolve('../scripts/' + script)).concat(args.slice(scriptIndex + 1)),
+      nodeArgs
+        .concat(require.resolve('../scripts/' + script))
+        .concat(args.slice(scriptIndex + 1)),
       { stdio: 'inherit' }
     );
     if (result.signal) {
-      if (result.signal === 'SIGKILL') {
+      if (result.signal === 'SIGSEGV') {
+        console.log({ result });
+        console.errors(
+          'react-scripts-parcel/bin error: There was a segfault while building - This may be related to a parcel issue. \n\n ' +
+            'check out https://github.com/sw-yx/create-react-app-parcel/issues/1 for more'
+        );
+      } else if (result.signal === 'SIGKILL') {
         console.log(
           'The build failed because the process exited too early. ' +
             'This probably means the system ran out of memory or someone called ' +

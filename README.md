@@ -99,3 +99,7 @@ Create React App Parcel is open source software [licensed as MIT](https://github
 ## Official Emoji
 
 of course it's the 💩
+
+## Alternatives
+
+There's this dinky little me-too project called [create-react-app](https://github.com/facebook/create-react-app), send them some love, who knows they could be big someday

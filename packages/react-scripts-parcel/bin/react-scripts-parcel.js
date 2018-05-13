@@ -39,7 +39,7 @@ switch (script) {
     if (result.signal) {
       if (result.signal === 'SIGSEGV') {
         console.log({ result });
-        console.errors(
+        console.error(
           'react-scripts-parcel/bin error: There was a segfault while building - This may be related to a parcel issue. \n\n ' +
             'check out https://github.com/sw-yx/create-react-app-parcel/issues/1 for more'
         );

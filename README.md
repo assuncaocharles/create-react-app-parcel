@@ -30,6 +30,12 @@ cd my-app
 yarn start
 ```
 
+and presto! (try clicking the react icon)
+
+![image](https://user-images.githubusercontent.com/35976578/39971555-35dfcffa-56cb-11e8-973e-346d265a6638.png)
+
+# C.R.A.P. structure
+
 You will have a very simple folder structure, same as `create-react-app`:
 
 ```
@@ -53,6 +59,8 @@ my-app
 ```
 
 No configuration or complicated folder structures, just the files you need to build your app.
+
+---
 
 # `react-scripts-parcel` API guide
 

@@ -10,13 +10,7 @@
   "bugs": {
     "url": "https://github.com/sw-yx/create-react-app-parcel/issues"
   },
-  "files": [
-    "bin",
-    "config",
-    "scripts",
-    "template",
-    "utils"
-  ],
+  "files": ["bin", "config", "scripts", "template", "utils"],
   "bin": {
     "react-scripts-parcel": "./bin/react-scripts-parcel.js"
   },
@@ -29,22 +23,13 @@
     "fsevents": "1.2.0"
   },
   "browserslist": {
-    "development": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 edge versions"
-    ],
-    "production": [
-      ">1%",
-      "last 4 versions",
-      "Firefox ESR",
-      "not ie < 11"
-    ]
+    "development": ["last 2 chrome versions", "last 2 firefox versions", "last 2 edge versions"],
+    "production": [">1%", "last 4 versions", "Firefox ESR", "not ie < 11"]
   },
   "dependencies": {
     "@babel/core": "7.0.0-beta.46",
     "@babel/runtime": "7.0.0-beta.46",
-    "babel-core": "7.0.0-bridge.0",
+    "babel-core": "^6.26.3",
     "babel-jest": "^22.4.3",
     "babel-preset-react-app": "^3.1.1",
     "browserslist": "2.11.3",

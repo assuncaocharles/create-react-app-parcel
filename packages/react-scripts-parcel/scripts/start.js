@@ -128,7 +128,7 @@ checkBrowsers(paths.appPath)
     const Bundler = require('parcel-bundler');
     const app = require('express')();
 
-    async function start() {
+    function start() {
       const file = paths.appHtml; // Pass an absolute path to the entrypoint here
       const options = {}; // See options section of api docs, for the possibilities
 

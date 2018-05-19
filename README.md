@@ -10,6 +10,7 @@ Preconfigured Features that come with your Parcel setup:
 * [preconfigured build setup](https://github.com/sw-yx/create-react-app-parcel/blob/master/packages/react-scripts-parcel/config/parcel.config.prod.js) based on the [ParcelJS API](https://parceljs.org/api.html)
 * nice eject experience that doesnt saddle you with a million webpack plugins
 * as far as possible, same DX as create-react-app (eg checks if you use `yarn` or `npm`, environment variables all the same)
+    * in particular it's a fork of create-react-app v2.0 so you also get features like [babel-plugin-macros](https://www.youtube.com/watch?v=nlAHtAQlFGk&list=WL&index=38) for free! 🔥
 
 ---
 

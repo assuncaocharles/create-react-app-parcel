@@ -90,6 +90,10 @@ Your app is ready to be deployed.
 
 ejects you out of this shiznit like so
 
+## How this was made
+
+Check out the slide deck at <https://twitter.com/swyx/status/999474452571283456> and <https://www.beautiful.ai/player/-LD4eaMxlqSlCy6biPmZ/Creating-Create-React-App/1?ref=github-crap> and the talk video should be coming soon.
+
 ## Contributing
 
 We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twitter [@swyx](https://twitter.com/swyx) to discuss or file an issue, this is super new

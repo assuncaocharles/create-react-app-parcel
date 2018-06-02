@@ -111,4 +111,10 @@ of course it's the 💩
 
 ## Alternatives
 
-There's this dinky little me-too project called [create-react-app](https://github.com/facebook/create-react-app), send them some love, who knows they could be big someday
+There's this dinky little me-too project called [create-react-app](https://github.com/facebook/create-react-app), send them some love, who knows they could be big someday.
+
+Also for **Typescript** users a custom script exists: https://github.com/sw-yx/create-react-app-parcel-typescript 
+
+```
+crap my-ts-app --scripts-version=create-react-app-parcel-typescript
+```

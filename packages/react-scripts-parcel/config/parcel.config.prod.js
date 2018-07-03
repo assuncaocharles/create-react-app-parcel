@@ -57,8 +57,7 @@ module.exports = {
   watch: false,
   cache: false,
   cacheDir: '.cache', // The directory cache gets put in, defaults to .cache
-  minify: true,
-  minify: false, // Minify files, enabled if process.env.NODE_ENV === 'production'
+  minify: true, // minify prod
   target: 'browser', // browser/node/electron, defaults to browser
   https: false, // Server files over https or http, defaults to false
   logLevel: 3, // 3 = log everything, 2 = log warnings & errors, 1 = log errors

@@ -94,7 +94,7 @@ ejects you out of this shiznit like so
 
 Check out the slide deck at <https://twitter.com/swyx/status/999474452571283456> and <https://www.beautiful.ai/player/-LD4eaMxlqSlCy6biPmZ/Creating-Create-React-App/1?ref=github-crap>. Also check out the [talk video here](https://www.youtube.com/watch?v=Et571vTAtT8)!
 
-[![creating CRAP](https://user-images.githubusercontent.com/6764957/43364597-37d636f8-92eb-11e8-8ae7-ca98e5b805af.png)](https://www.youtube.com/watch?v=Et571vTAtT8)
+<a href="https://www.youtube.com/watch?v=Et571vTAtT8"><img src="https://user-images.githubusercontent.com/6764957/43364597-37d636f8-92eb-11e8-8ae7-ca98e5b805af.png" alt="creating CRAP" width="200"></a>
 
 ## Contributing
 

@@ -3,7 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = { toggle: true };
+  constructor (props) {
+    super(props)
+    this.state = { toggle: true };
+  }
   toggleToggle = () => this.setState({ toggle: !this.state.toggle });
   render() {
     const { toggle } = this.state;

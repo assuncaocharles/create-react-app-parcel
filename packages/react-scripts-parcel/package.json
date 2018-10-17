@@ -22,7 +22,14 @@
   "optionalDependencies": {
     "fsevents": "1.2.0"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [">1%", "last 4 versions", "Firefox ESR", "not ie < 11"]
+  },
   "dependencies": {
     "@babel/core": "7.1.0",
     "@babel/runtime": "7.0.0-beta.46",
@@ -33,7 +40,12 @@
     "babel-preset-react-app": "^5.0.4",
     "browserslist": "2.11.3",
     "chalk": "2.3.0",
-    "eslint": "^4.19.1",
+    "eslint": "5.6.0",
+    "eslint-config-react-app": "^3.0.4",
+    "eslint-plugin-flowtype": "2.50.1",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-react": "7.11.1",
     "express": "^4.16.3",
     "find-pkg": "1.0.0",
     "fs-extra": "5.0.0",

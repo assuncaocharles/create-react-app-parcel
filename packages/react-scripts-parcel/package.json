@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-parcel",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Configuration and scripts for Create React App parcel.",
   "repository": "sw-yx/create-react-app-parcel",
   "license": "MIT",
@@ -59,11 +59,11 @@
     "graphql-tag": "^2.9.2",
     "inquirer": "5.0.0",
     "jest": "22.4.1",
+    "object-assign": "^4.1.1",
     "parcel-bundler": "^1.8.1",
     "pkg-up": "2.0.0",
-    "react-dev-utils": "^5.0.0",
     "raf": "^3.4.0",
-    "object-assign": "^4.1.1",
+    "react-dev-utils": "^5.0.0",
     "whatwg-fetch": "^2.0.4"
   }
 }

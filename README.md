@@ -1,32 +1,30 @@
+> ⚠️ WARNING: Since the upgrade to Babel 7 is incompatible with Parcel v1, CRAP is not supported for the time being until Parcel v2 is out and we can upgrade everything together (or if you want, send a PR to help!). With v0.0.38 we have reverted things to Babel 6 so that at least CRAP is working again :)
+
 # Create React App Parcel 💩
 
 > create react apps with parcel instead of webpack cos why not
 
 Preconfigured Features that come with your Parcel setup:
 
-* [babel-preset-react-app](https://github.com/facebook/create-react-app/tree/next/packages/babel-preset-react-app) so you can use the exact same JS features that come with create-react-app (eg public class fields)
-* improved `App.js` to show off the babel preset features (click on the React logo!)
-* serviceWorker available but off by default (similar to the coming create-react-app 2.0 setup)
-* [preconfigured build setup](https://github.com/sw-yx/create-react-app-parcel/blob/master/packages/react-scripts-parcel/config/parcel.config.prod.js) based on the [ParcelJS API](https://parceljs.org/api.html)
-* nice eject experience that doesnt saddle you with a million webpack plugins
-* as far as possible, same DX as create-react-app (eg checks if you use `yarn` or `npm`, environment variables all the same)
-    * in particular it's a fork of create-react-app v2.0 so you also get features like [babel-plugin-macros](https://www.youtube.com/watch?v=nlAHtAQlFGk&list=WL&index=38) for free! 🔥
-
----
-
-# Installing C.R.A.P.
-
-```bash
-npm i -g create-react-app-parcel
-```
+- [babel-preset-react-app](https://github.com/facebook/create-react-app/tree/next/packages/babel-preset-react-app) so you can use the exact same JS features that come with create-react-app (eg public class fields)
+- improved `App.js` to show off the babel preset features (click on the React logo!)
+- serviceWorker available but off by default (similar to the coming create-react-app 2.0 setup)
+- [preconfigured build setup](https://github.com/sw-yx/create-react-app-parcel/blob/master/packages/react-scripts-parcel/config/parcel.config.prod.js) based on the [ParcelJS API](https://parceljs.org/api.html)
+- nice eject experience that doesnt saddle you with a million webpack plugins
+- as far as possible, same DX as create-react-app (eg checks if you use `yarn` or `npm`, environment variables all the same)
+  - in particular it's a fork of create-react-app v2.0 so you also get features like [babel-plugin-macros](https://www.youtube.com/watch?v=nlAHtAQlFGk&list=WL&index=38) for free! 🔥
 
 ---
 
 # Using C.R.A.P.
 
 ```bash
-crap my-app
-# or create-react-app-parcel my-app
+npx create-react-app-parcel my-app
+
+## or install it:
+# npm i -g create-react-app-parcel
+# crap my-app
+
 cd my-app
 yarn start
 ```
@@ -104,8 +102,8 @@ We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twi
 
 We are grateful to the authors of existing related projects for their ideas and collaboration:
 
-* [create-react-app (@danabramov)](https://github.com/facebook/create-react-app)
-* [parcel (@jamiebuilds, @devongovett)](https://github.com/parcel-bundler/parcel)
+- [create-react-app (@danabramov)](https://github.com/facebook/create-react-app)
+- [parcel (@jamiebuilds, @devongovett)](https://github.com/parcel-bundler/parcel)
 
 ## License
 
@@ -119,7 +117,7 @@ of course it's the 💩
 
 There's this dinky little me-too project called [create-react-app](https://github.com/facebook/create-react-app), send them some love, who knows they could be big someday.
 
-Also for **Typescript** users a custom script exists: https://github.com/sw-yx/create-react-app-parcel-typescript 
+Also for **Typescript** users a custom script exists: https://github.com/sw-yx/create-react-app-parcel-typescript
 
 ```
 crap my-ts-app --scripts-version=create-react-app-parcel-typescript

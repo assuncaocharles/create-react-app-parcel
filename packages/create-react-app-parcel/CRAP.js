@@ -96,11 +96,7 @@ if (program.info) {
         System: ['OS', 'CPU'],
         Binaries: ['Node', 'npm', 'Yarn'],
         Browsers: ['Chrome', 'Edge', 'Internet Explorer', 'Firefox', 'Safari'],
-        npmPackages: [
-          'react@canary',
-          'react-dom@canary',
-          'react-scripts-parcel',
-        ],
+        npmPackages: ['react@next', 'react-dom@next', 'react-scripts-parcel'],
         npmGlobalPackages: ['create-react-app-parcel'],
       },
       {

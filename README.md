@@ -14,19 +14,14 @@ Preconfigured Features that come with your Parcel setup:
 
 ---
 
-# Installing C.R.A.P.
-
-```bash
-npm i -g create-react-app-parcel
-```
-
----
-
 # Using C.R.A.P.
 
 ```bash
-crap my-app
-# or create-react-app-parcel my-app
+npx create-react-app-parcel my-app
+
+## or you can install it
+npm i -g create-react-app-parcel
+crap my-app # or create-react-app-parcel my-app
 cd my-app
 yarn start
 ```

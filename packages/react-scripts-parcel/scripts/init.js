@@ -159,7 +159,8 @@ module.exports = function(
   args.push(
     'react@next',
     'react-dom@next',
-    '@babel/plugin-proposal-class-properties'
+    '@babel/plugin-proposal-class-properties',
+    '@babel/preset-react'
   );
 
   // Install additional template dependencies, if present

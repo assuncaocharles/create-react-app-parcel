@@ -288,7 +288,10 @@ function run(
   useYarn
 ) {
   const packageToInstall = getInstallPackage(version, originalDirectory);
-  const allDependencies = ['react', 'react-dom', packageToInstall];
+  const allDependencies = ['react@next', 'react-dom@next', packageToInstall];
+
+  allDependencies.push('@babel/plugin-proposal-class-properties');
+  allDependencies.push('@babel/preset-react');
 
   console.log('Installing packages. This might take a couple of minutes.');
   getPackageName(packageToInstall)

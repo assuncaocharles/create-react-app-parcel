@@ -21,6 +21,7 @@
     "react-scripts-parcel": "./bin/react-scripts-parcel.js"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
     "lerna": "^2.11.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"

@@ -1,7 +1,3 @@
-> ⚠️ DEPRECATED: I have no time to upgrade this package to Parcel v2 right now but it is clearly the right move. If you'd like to take it over, I will happily transfer everything to you. Just get in touch.
-
-> ⚠️ WARNING: Since the upgrade to Babel 7 is incompatible with Parcel v1, CRAP is not supported for the time being until Parcel v2 is out and we can upgrade everything together (or if you want, send a PR to help!). With v0.0.38 we have reverted things to Babel 6 so that at least CRAP is working again :)
-
 # Create React App Parcel 💩
 
 > create react apps with parcel instead of webpack cos why not

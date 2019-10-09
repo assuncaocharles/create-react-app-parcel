@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/create-react-app-parcel/package.json",
+        "packages/react-scripts-parcel/package.json"
+      ]
+    }
+  }
+}

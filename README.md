@@ -4,6 +4,8 @@
 
 # Create React App Parcel 💩
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/create-react-app-parcel.svg)](https://greenkeeper.io/)
+
 > create react apps with parcel instead of webpack cos why not
 
 Preconfigured Features that come with your Parcel setup:

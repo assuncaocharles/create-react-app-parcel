@@ -1,6 +1,6 @@
 {
   "name": "react-scripts-parcel",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "Configuration and scripts for Create React App parcel.",
   "repository": "sw-yx/create-react-app-parcel",
   "license": "MIT",
@@ -66,6 +66,7 @@
     "pkg-up": "2.0.0",
     "raf": "^3.4.0",
     "react-dev-utils": "^5.0.0",
+    "semver": "^6.3.0",
     "whatwg-fetch": "^2.0.4"
   }
 }

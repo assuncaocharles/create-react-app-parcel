@@ -9,6 +9,7 @@
 'use strict';
 
 const chalk = require('chalk');
+const semver = require('semver');
 const fs = require('fs');
 const path = require('path');
 
@@ -20,7 +21,7 @@ function verifyPackageTree() {
     // These are packages most likely to break in practice.
     // See https://github.com/facebook/create-react-app/issues/1795 for reasons why.
     // I have not included Babel here because plugins typically don't import Babel (so it's not affected).
-    // 'eslint',
+    'eslint',
     'jest',
     // 'webpack', // CRAP: swyx: dont need these
     // 'webpack-dev-server',
@@ -70,8 +71,9 @@ function verifyPackageTree() {
       const depPackageJson = JSON.parse(
         fs.readFileSync(maybeDepPackageJson, 'utf8')
       );
+      
       const expectedVersion = expectedVersionsByDep[dep];
-      if (depPackageJson.version !== expectedVersion) {
+      if (!semver.satisfies(depPackageJson.version, expectedVersion)) {
         console.error(
           chalk.red(
             `\nThere might be a problem with the project dependency tree.\n` +

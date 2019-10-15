@@ -68,5 +68,6 @@
     "react-dev-utils": "^5.0.0",
     "semver": "^6.3.0",
     "whatwg-fetch": "^2.0.4"
-  }
+  },
+  "gitHead": "727d1aaaf149a95e363c902ce821ee9aa1077239"
 }

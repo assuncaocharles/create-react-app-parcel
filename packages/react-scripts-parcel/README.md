@@ -94,7 +94,7 @@ Check out the slide deck at <https://twitter.com/swyx/status/999474452571283456>
 
 ## Contributing
 
-We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twitter [@swyx](https://twitter.com/swyx) to discuss or file an issue, this is super new
+We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twitter [@assuncaocharles](https://twitter.com/assuncaocharles) to discuss or file an issue, this is super new
 
 ## Acknowledgements
 

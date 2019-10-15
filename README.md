@@ -1,7 +1,3 @@
-> ⚠️ DEPRECATED: I have no time to upgrade this package to Parcel v2 right now but it is clearly the right move. If you'd like to take it over, I will happily transfer everything to you. Just get in touch.
-
-> ⚠️ WARNING: Since the upgrade to Babel 7 is incompatible with Parcel v1, CRAP is not supported for the time being until Parcel v2 is out and we can upgrade everything together (or if you want, send a PR to help!). With v0.0.38 we have reverted things to Babel 6 so that at least CRAP is working again :)
-
 # Create React App Parcel 💩
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/assuncaocharles/create-react-app-parcel.svg)](https://greenkeeper.io/)
@@ -100,7 +96,7 @@ Check out the slide deck at <https://twitter.com/swyx/status/999474452571283456>
 
 ## Contributing
 
-We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twitter [@swyx](https://twitter.com/swyx) to discuss or file an issue, this is super new
+We'd love to have your helping hand on `create-react-app-parcel`! Ping me on twitter [@assuncaocharles](https://twitter.com/assuncaocharles) to discuss or file an issue, this is super new
 
 ## Acknowledgements
 

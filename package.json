@@ -45,5 +45,12 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "changelog": {
+    "labels": {
+      "feature": "New Feature",
+      "perf": "Performance Improvements",
+      "bug": "Bug fix"
+    }
   }
 }
